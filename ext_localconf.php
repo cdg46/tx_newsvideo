@@ -6,6 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 t3lib_extMgm::addPItoST43($_EXTKEY, 'pi1/class.tx_newsvideo_pi1.php', '_pi1', '', 1);
  
     $TYPO3_CONF_VARS['EXTCONF']['tt_news']['extraItemMarkerHook'][] =  'EXT:tx_newsvideo/pi1/class.tx_newsvideo_pi1.php:tx_newsvideo_pi1';
+    $TYPO3_CONF_VARS['EXTCONF']['tx_news']['extraItemMarkerHook'][] =  'EXT:tx_newsvideo/pi1/class.tx_newsvideo_pi1.php:tx_newsvideo_pi1';
 
 #####################################################
 ## Hook for HTML-modification on the page   #########

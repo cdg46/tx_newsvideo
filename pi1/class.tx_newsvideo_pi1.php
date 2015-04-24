@@ -35,8 +35,8 @@
  *
  */
 
-require_once(PATH_tslib . 'class.tslib_pibase.php' );
-require_once(PATH_tslib . 'class.tslib_content.php');
+//require_once(PATH_tslib . 'class.tslib_pibase.php' );
+//require_once(PATH_tslib . 'class.tslib_content.php');
 
 /**
  * Plugin 'Intext video for tt_news, tt_content' for the 'tx_newsvideo' extension.

@@ -11,7 +11,7 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Intext video for tt_news, tt_content',
+	'title' => 'Intext video for tt_news, tx_news, tt_content',
 	'description' => 'Gives you the possibility to post videos in tt_news-text with special tags.',
 	'category' => 'fe',
 	'shy' => 0,
@@ -34,6 +34,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
+			'typo3' => '6.2.9-7.99.99',
 		),
 		'conflicts' => array(
 		),
