@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'tx_newsvideo'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_news.tx_newsvideo_width">Width for TD News Video</label>
+			<label index="tt_news.tx_newsvideo_height">Height for TD News Video</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_news.tx_newsvideo_width">Breite für TD News Video</label>
+			<label index="tt_news.tx_newsvideo_height">Höhe für TD News Video</label>
+		</languageKey>
+		<languageKey index="fr" ttype="array">
+			<label index="tt_news.tx_newsvideo_width">Largeur pour la video</label>
+			<label index="tt_news.tx_newsvideo_height">Hauteur pour la Video</label>
+		</languageKey>
+	</data>
+</T3locallang>

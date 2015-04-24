@@ -1,0 +1,6 @@
+plugin.tx_newsvideo {
+  video.width = 500
+  video.height = 280
+  video.small.width = 180
+  video.small.height = 100
+}
