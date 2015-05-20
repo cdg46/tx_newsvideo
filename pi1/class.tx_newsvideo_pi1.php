@@ -70,7 +70,6 @@ class tx_newsvideo_pi1 extends tslib_pibase {
         $this->cObj = t3lib_div::makeInstance("tslib_cObj");
         $this->ratio  = $row['tx_newsvideo_ratio']  ? $row['tx_newsvideo_ratio']  : $conf['newsvideo.']['ratio'];
         $this->height = $row['tx_newsvideo_height'] ? $row['tx_newsvideo_height'] : $conf['newsvideo.']['height'];
-        $templateSource = $conf['newsvideo.']['templateFile'] ? $conf['newsvideo.']['templateFile'] : 'EXT:tx_newsvideo/tx_newsvideo.tmpl';
 
         $this->templateCode = $this->cObj->fileResource($templateSource);
         if (empty($this->templateCode)) {
@@ -93,18 +92,18 @@ class tx_newsvideo_pi1 extends tslib_pibase {
         $content = $MarkersFound[1];
 
         foreach($content as $tag) {
-        if ($fromMain)
-        {
-            $tag = preg_split('/\/\//', $tag);
-            $tag = $tag[0];
-           
-        }
+            if ($fromMain)
+            {
+                $tag = preg_split('/\/\//', $tag);
+                $tag = $tag[0];
+            }
+
             $value = explode(':', $tag, 2);
             $templateSubpart = $this->cObj->getSubpart($this->templateCode, '###'.strtoupper($value[0]).'###');
 
             if (!empty($templateSubpart) AND $value[1]) {
                 $sizes = explode(':',$value[1]);
-                if($sizes[1] AND $sizes[2]) {
+                if($sizes[1]) {
                     $markerArray['###VIDEO_ID###'] = $sizes[0];
                     $markerArray['###VIDEO_RATIO###']    = $sizes[1];
                 } else {
