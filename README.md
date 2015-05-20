@@ -1,18 +1,17 @@
-# Insertion video en texte
+# Insertion video en texte
 
 ## usage
 
-  //VIDEO:PLATEFORME:VIDEOID:Largeur:hauteur//
+  //VIDEO:PLATEFORME:VIDEOID:Ratio//
 
   //VIDEO:PLATEFORME:VIDEOID//
 
 TS: config
   plugin.tx_newsvideo {
-    video.width = 500
-    video.height = 280
-    video.small.width = 180
-    video.small.height = 100
+    ratio = 16by9
   }
+
+ratio est 16/9em ou 4/3
 
 ## Plateforme disponibles
 
@@ -22,5 +21,8 @@ TS: config
   * KIKAVU
   * DAILYMOTION
   * WAT
-</body>
-</html>
+  * MEATACAFE
+
+## Responsive
+
+utilisation des class bootstrap 3 pour des videos responsive
