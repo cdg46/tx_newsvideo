@@ -35,8 +35,7 @@
  *
  */
 
-//require_once(PATH_tslib . 'class.tslib_pibase.php' );
-//require_once(PATH_tslib . 'class.tslib_content.php');
+if (!class_exists('tslib_pibase')) require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 /**
  * Plugin 'Intext video for tt_news, tt_content' for the 'tx_newsvideo' extension.
@@ -54,8 +53,7 @@ class tx_newsvideo_pi1 extends tslib_pibase {
     var $content;   // HTML code of the page
     var $conf;  // TypoScript Configuration for theis extension
     
-    var $width;
-    var $height;
+    var $ratio;
 
     /**
      * The extraItemMarkerProcessor function from tt_news
@@ -70,7 +68,7 @@ class tx_newsvideo_pi1 extends tslib_pibase {
         $this->conf = $conf;
 
         $this->cObj = t3lib_div::makeInstance("tslib_cObj");
-        $this->width  = $row['tx_newsvideo_width']  ? $row['tx_newsvideo_width']  : $conf['newsvideo.']['width'];
+        $this->ratio  = $row['tx_newsvideo_ratio']  ? $row['tx_newsvideo_ratio']  : $conf['newsvideo.']['ratio'];
         $this->height = $row['tx_newsvideo_height'] ? $row['tx_newsvideo_height'] : $conf['newsvideo.']['height'];
         $templateSource = $conf['newsvideo.']['templateFile'] ? $conf['newsvideo.']['templateFile'] : 'EXT:tx_newsvideo/tx_newsvideo.tmpl';
 
@@ -90,17 +88,15 @@ class tx_newsvideo_pi1 extends tslib_pibase {
      * @param    [type]        $news_content: ...
      * @return    video        code
      */
-    function renderVideoInCode($news_content, $fromMain = false, $width = 500, $height = 303) {
+    function renderVideoInCode($news_content, $fromMain = false, $ratio = '16by9') {
         preg_match_all('/\/\/VIDEO:(.*)\/\//', $news_content, $MarkersFound);
         $content = $MarkersFound[1];
 
         foreach($content as $tag) {
         if ($fromMain)
         {
-        $tag = preg_split('/\/\//', $tag);
-        $tag = $tag[0];
-//        $content = $MarkersFound[1];
-//        $tag = $tag[0];
+            $tag = preg_split('/\/\//', $tag);
+            $tag = $tag[0];
            
         }
             $value = explode(':', $tag, 2);
@@ -110,12 +106,10 @@ class tx_newsvideo_pi1 extends tslib_pibase {
                 $sizes = explode(':',$value[1]);
                 if($sizes[1] AND $sizes[2]) {
                     $markerArray['###VIDEO_ID###'] = $sizes[0];
-                    $markerArray['###WIDTH###']    = $sizes[1];
-                    $markerArray['###HEIGHT###']   = $sizes[2];
+                    $markerArray['###VIDEO_RATIO###']    = $sizes[1];
                 } else {
                     $markerArray['###VIDEO_ID###'] = $value[1];
-                    $markerArray['###WIDTH###']    = $this->width  ? $this->width  : $width;
-                    $markerArray['###HEIGHT###']   = $this->height ? $this->height : $height;
+                    $markerArray['###VIDEO_RATIO###']    = $this->ratio  ? $this->ratio  : $ratio;
                 }
 
                 $movie = $this->cObj->substituteMarkerArrayCached($templateSubpart, $markerArray, array(), array());
@@ -135,7 +129,7 @@ class tx_newsvideo_pi1 extends tslib_pibase {
 
         $this->cObj   = t3lib_div::makeInstance("tslib_cObj");
         $templateSource = $conf['newsvideo.']['templateFile'] ? $conf['newsvideo.']['templateFile'] : 'EXT:tx_newsvideo/tx_newsvideo.tmpl';
-        //var_dump($width . ' : ' . $height);
+
         $this->templateCode = $this->cObj->fileResource($templateSource);
         if (empty($this->templateCode)) {
             return $markerArray;
@@ -144,7 +138,7 @@ class tx_newsvideo_pi1 extends tslib_pibase {
     }
 }
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ttnews_codehighlight/pi1/class.tx_ttnewscodehighlight_pi1.php'])    {
-    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/ttnews_codehighlight/pi1/class.tx_ttnewscodehighlight_pi1.php']);
+if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/tx_newsvideo/pi1/class.tx_newsvideo_pi1.php'])    {
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/tx_newsvideo/pi1/class.tx_newsvideo_pi1.php']);
 }
 ?>

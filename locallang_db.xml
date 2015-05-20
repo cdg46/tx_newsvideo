@@ -6,16 +6,13 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="tt_news.tx_newsvideo_width">Width for TD News Video</label>
-			<label index="tt_news.tx_newsvideo_height">Height for TD News Video</label>
+			<label index="tx_newsvideo_ratio">Ratio for TD News Video</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="tt_news.tx_newsvideo_width">Breite für TD News Video</label>
-			<label index="tt_news.tx_newsvideo_height">Höhe für TD News Video</label>
+			<label index="tx_newsvideo_ratio">Ratio für TD News Video</label>
 		</languageKey>
 		<languageKey index="fr" ttype="array">
-			<label index="tt_news.tx_newsvideo_width">Largeur pour la video</label>
-			<label index="tt_news.tx_newsvideo_height">Hauteur pour la Video</label>
+			<label index="tx_newsvideo_ratio">Ratio pour la video</label>
 		</languageKey>
 	</data>
 </T3locallang>

@@ -3,30 +3,21 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 $tempColumns = array (
-	'tx_newsvideo_width' => array (		
+	'tx_newsvideo_ratio' => array (
 		'exclude' => 0,		
-		'label' => 'LLL:EXT:tx_newsvideo/locallang_db.xml:tt_news.tx_newsvideo_width',		
+		'label' => 'LLL:EXT:tx_newsvideo/locallang_db.xml:tx_newsvideo_ratio',		
 		'config' => array (
 			'type' => 'input',
-			'size' => 4,	
-			'eval' => 'numeric',
-		)
-	),
-	'tx_newsvideo_height' => array (		
-		'exclude' => 0,		
-		'label' => 'LLL:EXT:tx_newsvideo/locallang_db.xml:tt_news.tx_newsvideo_height',		
-		'config' => array (
-			'type' => 'input',
-			'size' => 4,	
-			'eval' => 'numeric',
+			'size' => 5,
+			'eval' => 'text',
 		)
 	),
 );
 
 t3lib_div::loadTCA('tt_news');
 t3lib_extMgm::addTCAcolumns('tt_news',$tempColumns,1);
-t3lib_extMgm::addToAllTCAtypes('tt_news','tx_newsvideo_width;;;;1-1-1, tx_newsvideo_height');
+t3lib_extMgm::addToAllTCAtypes('tt_news','tx_newsvideo_ratio;;;;');
 t3lib_div::loadTCA('tx_news');
 t3lib_extMgm::addTCAcolumns('tx_news',$tempColumns,1);
-t3lib_extMgm::addToAllTCAtypes('tx_news','tx_newsvideo_width;;;;1-1-1, tx_newsvideo_height');
+t3lib_extMgm::addToAllTCAtypes('tx_news','tx_newsvideo_ratio;;;;');
 ?>

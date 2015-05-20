@@ -1,6 +1,4 @@
 plugin.tx_newsvideo {
-  video.width = 500
-  video.height = 280
-  video.small.width = 180
-  video.small.height = 100
+  #cat=tx_newsvideo/video/010; type=options[16by9,4by3]; label= Select the video's ratio (16/9, 4/3)
+  ratio = 16by9
 }
